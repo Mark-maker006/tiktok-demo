@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+  width: 100%;
+}
+
+body {
+  margin: 0;
+  background: theme('colors.secondary.50');
+  color: theme('colors.secondary.800');
+  font-family: 'SF Pro Display', 'SF Pro Text', 'PingFang SC', -apple-system, BlinkMacSystemFont, 'Helvetica Neue',
+    Arial, sans-serif;
+}
+
+.lang-zh body {
+  font-family: 'PingFang SC', 'PingFang TC', 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Helvetica Neue',
+    Arial, sans-serif;
+}
+
+.dark body {
+  background: theme('colors.secondary.900');
+  color: theme('colors.secondary.100');
+}
+
+.scrollbar-hidden {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}
+
+.spotlight-card {
+  --spotlight-x: 50%;
+  --spotlight-y: 50%;
+  isolation: isolate;
+  position: relative;
+}
+
+.spotlight-card::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  z-index: 5;
+  border-radius: inherit;
+  padding: 2px;
+  pointer-events: none;
+  opacity: 0;
+  background:
+    radial-gradient(
+      340px circle at var(--spotlight-x) var(--spotlight-y),
+      rgb(255 47 128 / 0.98),
+      rgb(0 242 234 / 0.9) 18%,
+      rgb(37 244 238 / 0.44) 42%,
+      transparent 68%
+    );
+  filter: drop-shadow(0 0 16px rgb(0 242 234 / 0.45));
+  transition: opacity 160ms ease;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+.spotlight-card:hover::before,
+.spotlight-card:focus-within::before {
+  opacity: 1;
+}
+
+.dark .spotlight-card::before {
+  background:
+    radial-gradient(
+      360px circle at var(--spotlight-x) var(--spotlight-y),
+      rgb(255 47 128 / 0.95),
+      rgb(37 244 238 / 0.98) 20%,
+      rgb(0 242 234 / 0.52) 44%,
+      transparent 70%
+    );
+}
