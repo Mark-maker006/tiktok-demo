@@ -1,8 +1,8 @@
-import { colorTokens } from './data/config/colors.js';
+import { colorTokens } from './src/config/colors.js';
 
 export default {
   darkMode: 'class',
-  content: ['./app/**/*.{js,jsx}', './src/**/*.{js,jsx}'],
+  content: ['./index.html', './src/**/*.{js,jsx}'],
   theme: {
     extend: {
       colors: {
